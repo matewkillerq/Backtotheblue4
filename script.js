@@ -101,16 +101,6 @@ logo.style.transform = 'scale(1) rotateX(0) rotateY(0)';
 logo.style.filter = 'drop-shadow(0px 0px 0px transparent)';
 });
 
-function mostrarTooltip() {
-    const tooltip = document.getElementById("tooltip");
-    tooltip.classList.add("mostrar");
-    setTimeout(() => {
-        tooltip.classList.remove("mostrar");
-    }, 5000);
-}
-
-mostrarTooltip();
-
 async function fetchDollarRates() {
     try {
         const response = await fetch("https://api.bluelytics.com.ar/v2/latest");
@@ -144,3 +134,14 @@ function setCurrentDate() {
 }
 
 setCurrentDate();
+
+const infoIcon = document.getElementById("info-icon");
+const newTooltip = document.getElementById("new-tooltip");
+
+infoIcon.addEventListener("mouseenter", () => {
+    newTooltip.style.display = "block";
+});
+
+infoIcon.addEventListener("mouseleave", () => {
+    newTooltip.style.display = "none";
+});
